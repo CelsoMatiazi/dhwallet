@@ -31,11 +31,9 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
 
         recycler.adapter = TransactionAdapter(DataMock().dataTransaction()) {
 
-            println("teste action")
-
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.fragment_container, TransferFragment())
-                ?.commit()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, TransferFragment())
+                .commit()
 
         }
 
