@@ -6,7 +6,6 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.dhwallet.adapter.TransactionAdapter
 import com.digitalhouse.dhwallet.data_mock.DataMock
-import com.digitalhouse.dhwallet.model.Transaction
 
 private const val ARG_ENTRADA = "arg_entrada"
 private const val ARG_SAIDA = "arg_saida"
@@ -22,8 +21,6 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
             entrada = it.getString(ARG_ENTRADA)
             saida = it.getString(ARG_SAIDA)
         }
-
-
     }
 
 
@@ -32,7 +29,13 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_transaction)
 
-        recycler.adapter = TransactionAdapter(DataMock().dataTransaction())
+        recycler.adapter = TransactionAdapter(DataMock().dataTransaction()) {
+
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, TransferFragment())
+                .commit()
+
+        }
 
     }
 

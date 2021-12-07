@@ -11,6 +11,7 @@ class GroupTransaction (
 )
 
 enum class GroupType{
+    NAVTITLE,
     TITLE,
     CONTENT
 }
