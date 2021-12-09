@@ -1,6 +1,8 @@
 package com.digitalhouse.dhwallet
 
 import android.os.Bundle
+import android.transition.Slide
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +35,11 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
 
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, TransferFragment())
+                .addToBackStack(TransferFragment::class.java.name)
+                .apply {
+                    enterTransition = Slide(Gravity.END)
+                    exitTransition = Slide(Gravity.START)
+                }
                 .commit()
 
         }
