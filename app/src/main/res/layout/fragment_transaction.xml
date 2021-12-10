@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/concrete"
+    app:layoutDescription="@xml/fragment_transaction_scene"
     tools:context=".TransactionFragment">
 
 
@@ -12,29 +13,27 @@
         android:id="@+id/background_header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/guide_header"
         android:background="@drawable/background_card_top"
-    />
+        app:layout_constraintBottom_toBottomOf="@id/guide_header"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_transaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/title_transações"
-        app:titleTextColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_backward"
-        app:layout_constraintTop_toTopOf="parent">
+        app:title="@string/title_transações"
+        app:titleTextColor="@color/white">
 
         <ImageView
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@drawable/foto"
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="16dp"
             android:layout_gravity="end"
-    />
+            android:layout_marginEnd="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/foto" />
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -42,54 +41,53 @@
         android:id="@+id/tv_transaction_entradas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="151dp"
         android:text="@string/entradas"
         android:textColor="@color/white"
         android:textSize="13sp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="151dp"
-        android:layout_marginStart="55dp"
-    />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="175.80dp"
         android:src="@drawable/ic_arrow_down"
         app:layout_constraintEnd_toStartOf="@id/tv_transaction_entradasValue"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="175.80dp"
-        
-    />
+
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/tv_transaction_entradasValue"
+        style="@style/Title.Inverted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         android:text="R$ 45,35"
         android:textColor="@color/white"
         android:textSize="24sp"
-        android:layout_marginTop="6dp"
-        style="@style/Title.Inverted"
-        app:layout_constraintTop_toBottomOf="@id/tv_transaction_entradas"
         app:layout_constraintStart_toStartOf="@id/tv_transaction_entradas"
+        app:layout_constraintTop_toBottomOf="@id/tv_transaction_entradas"
 
-    />
+        />
 
 
     <TextView
         android:id="@+id/tv_transaction_saidas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="151dp"
         android:text="Saidas"
         android:textColor="@color/white"
         android:textSize="13sp"
         app:layout_constraintStart_toEndOf="@id/arrow_up"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="151dp"
 
-    />
+        />
 
 
     <ImageView
@@ -97,25 +95,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_arrow_up"
-        app:layout_constraintTop_toTopOf="@id/tv_transaction_saidasValue"
         app:layout_constraintStart_toStartOf="@id/guide_center"
-    />
+        app:layout_constraintTop_toTopOf="@id/tv_transaction_saidasValue" />
 
 
     <TextView
         android:id="@+id/tv_transaction_saidasValue"
+        style="@style/Title.Inverted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         android:text="R$ 536"
-        style="@style/Title.Inverted"
         android:textColor="@color/white"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/tv_transaction_saidas"
         app:layout_constraintStart_toEndOf="@id/arrow_up"
-        android:layout_marginTop="6dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_transaction_saidas"
 
-    />
-
+        />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -123,8 +119,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="244dp"
-    />
+        app:layout_constraintGuide_begin="244dp" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -132,35 +127,31 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp"
-    />
+        app:layout_constraintGuide_begin="16dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_end"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp"
-    />
+        app:layout_constraintGuide_end="16dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_center"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5"
-        />
+        app:layout_constraintGuide_percent=".5" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_transaction"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guide_header"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="10"
-        tools:listitem="@layout/item_transaction"
-    />
+        tools:listitem="@layout/item_transaction" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
