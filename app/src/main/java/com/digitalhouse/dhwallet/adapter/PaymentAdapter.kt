@@ -12,10 +12,10 @@ import com.digitalhouse.dhwallet.R
 import com.digitalhouse.dhwallet.model.GroupTransaction
 import com.digitalhouse.dhwallet.model.GroupType
 
-private const val HEADER = 0
-private const val CONTENT = 1
-private const val NAVTITLE = 2
-private const val MENU = 3
+private const val MENU = 0
+private const val NAVTITLE = 1
+private const val CONTENT = 2
+
 
 class PaymentAdapter(
     private val items: List<GroupTransaction>
@@ -45,7 +45,7 @@ class PaymentAdapter(
             )
         }
 
-        return PaymentViewHolder(
+        return PaymentContentViewHolder(
             inflator.inflate(
                 R.layout.item_transaction,
                 parent,
@@ -56,16 +56,13 @@ class PaymentAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
-            is PaymentViewHolder -> holder.bind(items[position])
             is PaymentTitleViewHolder -> holder.bindNavPay(items[position])
+            is PaymentContentViewHolder -> holder.bind(items[position])
         }
     }
 
 
     override fun getItemViewType(position: Int): Int {
-        if(items[position].type == GroupType.TITLE){
-            return HEADER
-        }
 
         if(items[position].type == GroupType.NAVTITLE){
             return NAVTITLE
@@ -83,7 +80,7 @@ class PaymentAdapter(
 }
 
 
-class PaymentViewHolder(view: View): RecyclerView.ViewHolder(view){
+class PaymentContentViewHolder(view: View): RecyclerView.ViewHolder(view){
 
     private val image : ImageView = view.findViewById(R.id.item_transaction_image)
     private val title : TextView = view.findViewById(R.id.item_transaction_title)
