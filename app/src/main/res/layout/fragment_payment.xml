@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/concrete"
+    app:layoutDescription="@xml/fragment_payment_scene"
+    tools:context=".PaymentFragment">
+
+
+    <View
+        android:id="@+id/background_payment_header"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/background_card_top"
+        app:layout_constraintBottom_toBottomOf="@id/guide_header_payment"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_backward"
+        app:title="@string/pagamento"
+        app:titleTextColor="@color/white">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="TODO"
+            android:scaleType="centerCrop"
+            android:src="@drawable/foto" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_payment"
+        style="@style/Widget.DHWallet.SearchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:defaultQueryHint="@string/busque_uma_opcao"
+        app:layout_constraintBottom_toBottomOf="@id/guide_header_payment"
+        app:layout_constraintEnd_toEndOf="@id/guide_end_payment"
+        app:layout_constraintStart_toStartOf="@id/guide_start_payment"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_payment"
+        tools:ignore="TouchTargetSizeCheck" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_header_payment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="223dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_start_payment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_end_payment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_payment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guide_header_payment" />
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

@@ -155,4 +155,80 @@ class DataMock {
         )
     }
 
+
+    fun dataPayment() : MutableList<GroupTransaction>{
+        return mutableListOf(
+
+            GroupTransaction(
+                type = GroupType.MENU,
+
+            ),
+            GroupTransaction(
+                type = GroupType.NAVTITLE,
+                title = "Mais Usados"
+            ),
+
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Creative Electric Service",
+                subtitle = "14460 Beier Curve, Venamouth, VT 09239-2090",
+                image = "https://i1.wp.com/www.creativevivid.com/wp-content/uploads/2018/03/Circle-Logo-Templates.jpg?fit=600%2C340&ssl=1"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Pyhton Water Company",
+                subtitle = "Burgerplatz 28, 15583 Eutin",
+                image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGXRYz1Ph1MBE3T3iPEhclJZYaC-_GLhPW0B4YhY6QEJUDIarRKLvOoacpSXipDcCgdTw&usqp=CAU"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Link3 Technologies Ltd.",
+                subtitle = "6798 Dare Underpass",
+                image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRpSOuPWBzx8FQlQoztgxbTQPFpizvITcFw&usqp=CAU"
+
+            ),
+
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "The Circle",
+                subtitle = "6798 Dare Underpass",
+                image = "https://upload.wikimedia.org/wikipedia/commons/4/4c/The_Circle_Logo.jpg"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Creative Electric Service",
+                subtitle = "14460 Beier Curve, Venamouth, VT 09239-2090",
+                image = "https://i1.wp.com/www.creativevivid.com/wp-content/uploads/2018/03/Circle-Logo-Templates.jpg?fit=600%2C340&ssl=1"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Pyhton Water Company",
+                subtitle = "Burgerplatz 28, 15583 Eutin",
+                image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGXRYz1Ph1MBE3T3iPEhclJZYaC-_GLhPW0B4YhY6QEJUDIarRKLvOoacpSXipDcCgdTw&usqp=CAU"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Link3 Technologies Ltd.",
+                subtitle = "6798 Dare Underpass",
+                image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRpSOuPWBzx8FQlQoztgxbTQPFpizvITcFw&usqp=CAU"
+
+            ),
+
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "The Circle",
+                subtitle = "6798 Dare Underpass",
+                image = "https://upload.wikimedia.org/wikipedia/commons/4/4c/The_Circle_Logo.jpg"
+
+            ),
+
+
+        )
+    }
+
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+       <KeyFrameSet>
+       </KeyFrameSet>
+        <OnSwipe motion:touchAnchorId="@id/recycler_payment" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/guide_header_payment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintGuide_begin="58dp" />
+        <Constraint
+            android:id="@+id/search_payment"
+            motion:layout_constraintEnd_toEndOf="@id/guide_end_payment"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/guide_header_payment"
+            motion:layout_constraintStart_toStartOf="@id/guide_start_payment"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="35dp" />
+    </ConstraintSet>
+</MotionScene>

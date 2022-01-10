@@ -13,4 +13,9 @@
     <string name="title_hoje">Hoje</string>
     <string name="title_transações">Transações</string>
     <string name="entradas">Entradas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="busque_uma_opcao">Busque uma opção de pagamento</string>
+    <string name="pagamento">Pagamento</string>
+    <string name="mais_usados">Mais Usados</string>
 </resources>
