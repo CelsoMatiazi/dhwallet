@@ -25,33 +25,12 @@ class PaymentAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflator = LayoutInflater.from(parent.context)
 
-        if(viewType == MENU){
-            return PaymentMenuViewHolder(
-                inflator.inflate(
-                    R.layout.payment_menu,
-                    parent,
-                    false
-                )
-            )
+        return when(viewType){
+            MENU -> PaymentMenuViewHolder(inflator.inflate(R.layout.payment_menu, parent, false))
+            NAVTITLE -> PaymentTitleViewHolder(inflator.inflate(R.layout.nav_title_transaction, parent, false))
+            else -> PaymentContentViewHolder(inflator.inflate(R.layout.item_transaction, parent, false))
         }
 
-        if(viewType == NAVTITLE){
-            return PaymentTitleViewHolder(
-                inflator.inflate(
-                    R.layout.nav_title_transaction,
-                    parent,
-                    false
-                )
-            )
-        }
-
-        return PaymentContentViewHolder(
-            inflator.inflate(
-                R.layout.item_transaction,
-                parent,
-                false
-            )
-        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -64,15 +43,12 @@ class PaymentAdapter(
 
     override fun getItemViewType(position: Int): Int {
 
-        if(items[position].type == GroupType.NAVTITLE){
-            return NAVTITLE
+        return when (items[position].type) {
+            GroupType.NAVTITLE -> NAVTITLE
+            GroupType.CONTENT -> CONTENT
+            else -> MENU
         }
 
-        if(items[position].type == GroupType.CONTENT){
-            return CONTENT
-        }
-
-        return MENU
     }
 
 

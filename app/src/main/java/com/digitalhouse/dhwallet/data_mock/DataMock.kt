@@ -231,4 +231,150 @@ class DataMock {
         )
     }
 
+
+
+    fun dataCardItemOfertas() : MutableList<GroupTransaction>{
+        return mutableListOf(
+
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                image = "https://expressodelivery.com.br/blog/wp-content/uploads/2017/06/cupons-de-desconto-pizzarias-810x420.png"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                image = "https://media.cuponeria.com.br/2021/12/fb6532c7-cupom-o-boticario-cupom-secreto-de-frete-gratis-em-todas-as-compras-no-site-o-boticario_3637-420x226.jpg"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+
+                image = "https://i0.wp.com/reserva85.com.br/wp-content/uploads/2020/06/Cupom-de-desconto-para-comprar-vinho-em-promo%C3%A7%C3%A3o-RESERVA85.png"
+
+            ),
+
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                image = "https://i.ytimg.com/vi/7g2YEqTYw9w/maxresdefault.jpg"
+
+            ),
+
+
+        )
+    }
+
+
+
+    fun dataCardItemDescontos() : MutableList<GroupTransaction>{
+        return mutableListOf(
+
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                image = "https://painel.solidweb.com.br/uploads/16/16_2019-06-13_01-06-33_4_324066624.png"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                image = "https://www.istoedinheiro.com.br/wp-content/uploads/sites/17/2020/12/amazon-divulgacao.png"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCkLoG1OCzKQxJrWxWMe1wKQA504I1KYkZ5EzL-Si4AuJhzuDMKx47fmf9FVxqry-BQp4&usqp=CAU"
+
+            ),
+
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                image = "https://trademap.com.br/wp-content/uploads/2021/05/Magalu-divulgacao.jpg"
+
+            ),
+
+
+        )
+    }
+
+    fun dataTransHomeCard() : MutableList<GroupTransaction>{
+        return mutableListOf(
+            GroupTransaction(
+                type = GroupType.NAVTITLE,
+                title = "Transações"
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Dribble Inc",
+                subtitle = "Pagamento",
+                value = "+ R$ 45",
+                image = "https://w7.pngwing.com/pngs/826/884/png-transparent-dribbble-logo-graphic-design-design-web-design-user-interface-design-photography-thumbnail.png"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Spotify Family",
+                subtitle = "Pagamento",
+                value = "- R$ 163",
+                image = "https://cdn.icon-icons.com/icons2/2429/PNG/512/spotify_logo_icon_147234.png"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Netflix",
+                subtitle = "Pagamento",
+                value = "- R$ 15",
+                image = "https://assets.b9.com.br/wp-content/uploads/2016/06/netflix-logo-thumb.jpg"
+
+            ),
+
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Dribble Inc",
+                subtitle = "Pagamento",
+                value = "+ R$ 45",
+                image = "https://w7.pngwing.com/pngs/826/884/png-transparent-dribbble-logo-graphic-design-design-web-design-user-interface-design-photography-thumbnail.png"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Spotify Family",
+                subtitle = "Pagamento",
+                value = "- R$ 163",
+                image = "https://cdn.icon-icons.com/icons2/2429/PNG/512/spotify_logo_icon_147234.png"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Netflix",
+                subtitle = "Pagamento",
+                value = "- R$ 15",
+                image = "https://assets.b9.com.br/wp-content/uploads/2016/06/netflix-logo-thumb.jpg"
+
+            ),
+
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Dribble Inc",
+                subtitle = "Pagamento",
+                value = "+ R$ 45",
+                image = "https://w7.pngwing.com/pngs/826/884/png-transparent-dribbble-logo-graphic-design-design-web-design-user-interface-design-photography-thumbnail.png"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Spotify Family",
+                subtitle = "Pagamento",
+                value = "- R$ 163",
+                image = "https://cdn.icon-icons.com/icons2/2429/PNG/512/spotify_logo_icon_147234.png"
+
+            ),
+            GroupTransaction(
+                type = GroupType.CONTENT,
+                title = "Netflix",
+                subtitle = "Pagamento",
+                value = "- R$ 15",
+                image = "https://assets.b9.com.br/wp-content/uploads/2016/06/netflix-logo-thumb.jpg"
+
+            ),
+        )
+    }
+
 }
