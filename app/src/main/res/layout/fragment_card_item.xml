@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layoutDescription="@xml/fragment_card_item_scene"
     tools:context=".CardItemFragment">
 
     <View
@@ -12,8 +13,7 @@
         android:layout_height="0dp"
         android:background="@drawable/background_card_top"
         app:layout_constraintBottom_toBottomOf="@id/guide_header_cardItem"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.appcompat.widget.Toolbar
@@ -36,79 +36,74 @@
 
     <TextView
         android:id="@+id/cardItem_limit"
+        style="@style/Subtitle.Inverted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Limite"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guide_start_cardItem"
         android:layout_marginTop="105dp"
-        style="@style/Subtitle.Inverted"
-    />
+        android:text="Limite"
+        app:layout_constraintStart_toStartOf="@id/guide_start_cardItem"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/cardItem_value"
+        style="@style/Title.Inverted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="R$ 18,24"
-        app:layout_constraintTop_toBottomOf="@id/cardItem_limit"
         app:layout_constraintStart_toStartOf="@id/guide_start_cardItem"
-        style="@style/Title.Inverted"
-    />
+        app:layout_constraintTop_toBottomOf="@id/cardItem_limit" />
 
 
     <TextView
         android:id="@+id/cardItem_obscure_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="****"
-        android:textSize="20sp"
-        android:textColor="@color/white"
         android:layout_marginTop="22dp"
-        app:layout_constraintTop_toBottomOf="@id/cardItem_value"
+        android:text="****"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/guide_start_cardItem"
-    />
+        app:layout_constraintTop_toBottomOf="@id/cardItem_value" />
 
     <TextView
         android:id="@+id/cardItem_obscure_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="****"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:layout_marginTop="22dp"
         android:layout_marginStart="35dp"
+        android:layout_marginTop="22dp"
+        android:text="****"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@id/cardItem_obscure_1"
-        app:layout_constraintTop_toBottomOf="@id/cardItem_value"
-    />
+        app:layout_constraintTop_toBottomOf="@id/cardItem_value" />
 
     <TextView
         android:id="@+id/cardItem_obscure_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="****"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:layout_marginTop="22dp"
         android:layout_marginStart="35dp"
+        android:layout_marginTop="22dp"
+        android:text="****"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@id/cardItem_obscure_2"
-        app:layout_constraintTop_toBottomOf="@id/cardItem_value"
-        />
+        app:layout_constraintTop_toBottomOf="@id/cardItem_value" />
 
     <TextView
         android:id="@+id/cardItem_cardNumber4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1289"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:layout_marginTop="22dp"
         android:layout_marginStart="35dp"
+        android:layout_marginTop="22dp"
+        android:text="1289"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@id/cardItem_obscure_3"
-        app:layout_constraintTop_toBottomOf="@id/cardItem_value"
-        />
+        app:layout_constraintTop_toBottomOf="@id/cardItem_value" />
 
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -260,9 +255,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@id/cardItem_title_descontos"
                 android:layout_marginBottom="20dp"
-            />
+                app:layout_constraintTop_toBottomOf="@id/cardItem_title_descontos" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -292,5 +286,4 @@
         app:layout_constraintGuide_end="16dp" />
 
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

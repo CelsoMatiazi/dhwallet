@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/homeCard_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_home_card"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:minHeight="250dp"
+    android:padding="24dp"
+    >
+
+
+    <TextView
+        android:id="@+id/homeCard_limit"
+        style="@style/Subtitle.Inverted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homeCard_value"
+        style="@style/Title.Inverted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R$ 18,24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_limit"
+    />
+
+    <ImageView
+        android:id="@+id/homeCard_bandeira"
+        android:layout_width="48dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_visa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_limit"
+
+    />
+
+
+    <TextView
+        android:id="@+id/homeCard_obscure_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="****"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/homeCard_obscure_2"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_value"
+    />
+
+    <TextView
+        android:id="@+id/homeCard_obscure_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="32dp"
+        android:text="****"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/homeCard_obscure_1"
+        app:layout_constraintEnd_toStartOf="@id/homeCard_obscure_3"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_value"
+    />
+
+    <TextView
+        android:id="@+id/homeCard_obscure_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="32dp"
+        android:text="****"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/homeCard_obscure_2"
+        app:layout_constraintEnd_toStartOf="@id/homeCard_cardNumber4"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_value"
+    />
+
+    <TextView
+        android:id="@+id/homeCard_cardNumber4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="32dp"
+        android:text="1289"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/homeCard_obscure_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_value"
+    />
+
+
+
+    <TextView
+        android:id="@+id/homeCard_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_obscure_1"
+        android:text="NOME"
+        style="@style/Subtitle.Inverted"
+        android:layout_marginTop="28dp"
+    />
+
+    <TextView
+        android:id="@+id/homeCard_validade_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VALIDADE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_cardNumber4"
+        android:layout_marginTop="28dp"
+        style="@style/Subtitle.Inverted"
+    />
+
+    <TextView
+        android:id="@+id/homeCard_nome_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ATIQUR RAHAMAN"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_nome"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="7dp"
+    />
+
+    <TextView
+        android:id="@+id/homeCard_validade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09/24"
+        app:layout_constraintTop_toBottomOf="@id/homeCard_validade_title"
+        app:layout_constraintStart_toStartOf="@id/homeCard_validade_title"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="7dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

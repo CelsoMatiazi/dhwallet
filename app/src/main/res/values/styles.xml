@@ -34,6 +34,10 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="Title" parent="Headline6">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="Subtitle.Inverted" parent="TextView.Inverted">
         <item name="android:textSize">13sp</item>
     </style>
