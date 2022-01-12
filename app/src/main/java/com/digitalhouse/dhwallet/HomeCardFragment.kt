@@ -1,10 +1,13 @@
 package com.digitalhouse.dhwallet
 
 import android.os.Bundle
+import android.transition.Slide
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.digitalhouse.dhwallet.adapter.CardViewPageAdapter
@@ -52,7 +55,7 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
 
         val viewPager = view.findViewById<ViewPager2>(R.id.list_card)
         viewPager.adapter = CardViewPageAdapter(this, listCards){
-            //TODO ir para a tela de detalhe quando clicar no cartao
+            sendToDetail()
         }
 
         viewPager.addItemDecoration(
@@ -67,9 +70,31 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
 
         val recycler = view.findViewById<RecyclerView>(R.id.homeCard_recycler)
         recycler.adapter = TransactionAdapter(DataMock().dataTransHomeCard()){
-            //TODO click on item
+            sendToTransaction()
         }
 
+    }
+
+
+    private fun sendToTransaction(){
+
+        val action = HomeCardFragmentDirections
+            .actionHomeCardFragmentToTransactionFragment(
+                "R$ 50.00",
+                "R$ 678.00"
+            )
+
+        findNavController().navigate(action)
+    }
+
+    private fun sendToDetail(){
+
+        //TODO passar limite e numero do cartao
+
+        val action = HomeCardFragmentDirections
+            .actionHomeCardFragmentToCardItemFragment("R$ 20,00", "8888")
+
+        findNavController().navigate(action)
     }
 
 
