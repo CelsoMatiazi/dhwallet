@@ -5,13 +5,18 @@ import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.dhwallet.adapter.CardItemAdapter
 import com.digitalhouse.dhwallet.data_mock.DataMock
 
 class CardItemFragment : Fragment(R.layout.fragment_card_item) {
+
+
+    private val cardItemValue: CardItemFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,6 +35,12 @@ class CardItemFragment : Fragment(R.layout.fragment_card_item) {
         val btnTransferir = view.findViewById<ImageView>(R.id.cardItem_icon_1)
         val btnTransacoes = view.findViewById<ImageView>(R.id.cardItem_icon_2)
         val btnPagamentos = view.findViewById<ImageView>(R.id.cardItem_icon_3)
+
+        val limit = view.findViewById<TextView>(R.id.cardItem_value)
+        val cardNumber = view.findViewById<TextView>(R.id.cardItem_cardNumber4)
+
+        limit.text = cardItemValue.argLimite
+        cardNumber.text = cardItemValue.argCardNumber
 
         btnTransferir.setOnClickListener{
             sendToTransfer().apply {

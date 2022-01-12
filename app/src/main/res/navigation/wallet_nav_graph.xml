@@ -22,6 +22,10 @@
         android:name="com.digitalhouse.dhwallet.CardItemFragment"
         android:label="fragment_card_item"
         tools:layout="@layout/fragment_card_item" >
+
+        <argument android:name="arg_limite"/>
+        <argument android:name="arg_cardNumber"/>
+
         <action
             android:id="@+id/action_cardItemFragment_to_transferFragment"
             app:destination="@id/transferFragment" />
@@ -37,6 +41,10 @@
         android:name="com.digitalhouse.dhwallet.TransactionFragment"
         android:label="fragment_transaction"
         tools:layout="@layout/fragment_transaction" >
+
+        <argument android:name="arg_entrada"/>
+        <argument android:name="arg_saida"/>
+
         <action
             android:id="@+id/action_transactionFragment_to_transferFragment"
             app:destination="@id/transferFragment" />

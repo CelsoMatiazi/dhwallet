@@ -77,11 +77,24 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
 
 
     private fun sendToTransaction(){
-        findNavController().navigate(R.id.action_homeCardFragment_to_transactionFragment)
+
+        val action = HomeCardFragmentDirections
+            .actionHomeCardFragmentToTransactionFragment(
+                "R$ 50.00",
+                "R$ 678.00"
+            )
+
+        findNavController().navigate(action)
     }
 
     private fun sendToDetail(){
-        findNavController().navigate(R.id.action_homeCardFragment_to_cardItemFragment)
+
+        //TODO passar limite e numero do cartao
+
+        val action = HomeCardFragmentDirections
+            .actionHomeCardFragmentToCardItemFragment("R$ 20,00", "8888")
+
+        findNavController().navigate(action)
     }
 
 

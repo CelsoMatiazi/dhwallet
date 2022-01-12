@@ -3,6 +3,7 @@ package com.digitalhouse.dhwallet.adapter
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.adapter.FragmentViewHolder
+import com.bumptech.glide.Glide.init
 
 class CardViewPageAdapter(
     fragment: Fragment,
@@ -25,6 +26,7 @@ class CardViewPageAdapter(
         position: Int,
         payloads: MutableList<Any>
     ) {
+
         super.onBindViewHolder(holder, position, payloads)
         holder.itemView.setOnClickListener {action.invoke()}
     }
