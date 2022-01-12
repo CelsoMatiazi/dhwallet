@@ -120,6 +120,5 @@ class NavTitleViewHolder(view: View, action : (GroupTransaction) -> Unit) : Recy
     fun bindNav(item: GroupTransaction){
         navTitle.text = item.title
         currentItem = item
-
     }
 }
