@@ -6,13 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.Toolbar
+import androidx.core.graphics.drawable.toDrawable
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.dhwallet.adapter.CardItemAdapter
 import com.digitalhouse.dhwallet.data_mock.DataMock
+import com.digitalhouse.dhwallet.model.Card
 
 class CardItemFragment : Fragment(R.layout.fragment_card_item) {
 
@@ -42,9 +46,14 @@ class CardItemFragment : Fragment(R.layout.fragment_card_item) {
 
         val limit = view.findViewById<TextView>(R.id.cardItem_value)
         val cardNumber = view.findViewById<TextView>(R.id.cardItem_cardNumber4)
+        val bg = view.findViewById<View>(R.id.background_header)
 
-        limit.text = cardItemValue.argLimite
-        cardNumber.text = cardItemValue.argCardNumber
+        val card: Card = cardItemValue.argCard
+
+        limit.text = card.limit
+        cardNumber.text = card.number
+        bg.setBackgroundResource(card.background)
+
 
         btnTransferir.setOnClickListener{
             sendToTransfer()
