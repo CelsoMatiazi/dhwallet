@@ -1,12 +1,8 @@
 package com.digitalhouse.dhwallet
 
 import android.os.Bundle
-import android.transition.Slide
-import android.view.Gravity
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -19,10 +15,6 @@ import com.digitalhouse.dhwallet.util.decorator.HorizontalMarginItemDecoration
 
 
 class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
-
-
-    var value = "R$ 0,00"
-    var numCard = "0000"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,9 +48,7 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
 
         val viewPager = view.findViewById<ViewPager2>(R.id.list_card)
         viewPager.adapter = CardViewPageAdapter(this, listCards){
-            value = it.limit
-            numCard = it.number
-            sendToDetail()
+            sendToDetail(it)
         }
 
         viewPager.addItemDecoration(
@@ -90,10 +80,10 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
         findNavController().navigate(action)
     }
 
-    private fun sendToDetail(){
+    private fun sendToDetail(card: Card){
 
         val action = HomeCardFragmentDirections
-            .actionHomeCardFragmentToCardItemFragment(value, numCard)
+            .actionHomeCardFragmentToCardItemFragment(card)
 
         findNavController().navigate(action)
     }
