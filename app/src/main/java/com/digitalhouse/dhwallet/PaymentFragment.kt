@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.dhwallet.adapter.ContactAdapter
@@ -17,6 +18,9 @@ class PaymentFragment : Fragment(R.layout.fragment_payment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<Toolbar>(R.id.toolbar_payment)
+            .setNavigationOnClickListener { activity?.onBackPressed() }
 
         val recyclerPay = view.findViewById<RecyclerView>(R.id.recycler_payment)
         recyclerPay.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)

@@ -6,6 +6,7 @@ import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,9 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<Toolbar>(R.id.toolbar_transaction)
+            .setNavigationOnClickListener { activity?.onBackPressed() }
 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_transaction)
 

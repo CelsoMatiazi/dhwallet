@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,9 @@ class CardItemFragment : Fragment(R.layout.fragment_card_item) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<Toolbar>(R.id.toolbar_cardItem)
+            .setNavigationOnClickListener { activity?.onBackPressed() }
 
         val recyclerCardItem = view.findViewById<RecyclerView>(R.id.cardItem_recycler_1)
         recyclerCardItem.layoutManager = LinearLayoutManager(view.context, LinearLayoutManager.HORIZONTAL, false)
@@ -43,24 +47,15 @@ class CardItemFragment : Fragment(R.layout.fragment_card_item) {
         cardNumber.text = cardItemValue.argCardNumber
 
         btnTransferir.setOnClickListener{
-            sendToTransfer().apply {
-                enterTransition = Slide(Gravity.END)
-                exitTransition = Slide(Gravity.START)
-            }
+            sendToTransfer()
         }
 
         btnTransacoes.setOnClickListener{
-            sendToTransaction().apply {
-                enterTransition = Slide(Gravity.END)
-                exitTransition = Slide(Gravity.START)
-            }
+            sendToTransaction()
         }
 
         btnPagamentos.setOnClickListener{
-            sendToPayment().apply {
-                enterTransition = Slide(Gravity.END)
-                exitTransition = Slide(Gravity.START)
-            }
+            sendToPayment()
         }
 
     }
@@ -71,7 +66,12 @@ class CardItemFragment : Fragment(R.layout.fragment_card_item) {
     }
 
     private fun sendToTransaction(){
-        findNavController().navigate(R.id.action_cardItemFragment_to_transactionFragment)
+        val action = CardItemFragmentDirections
+            .actionCardItemFragmentToTransactionFragment(
+                "R$ 50.00",
+                "R$ 678.00"
+            )
+        findNavController().navigate(action)
     }
 
     private fun sendToPayment(){
