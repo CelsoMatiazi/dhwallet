@@ -4,11 +4,13 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.adapter.FragmentViewHolder
 import com.bumptech.glide.Glide.init
+import com.digitalhouse.dhwallet.HomeCardItemFragment
+import com.digitalhouse.dhwallet.model.Card
 
 class CardViewPageAdapter(
     fragment: Fragment,
-    private val items: List<Fragment>,
-    private val action: () -> Unit
+    private val items: List<Card>,
+    private val action: (cardItem: Card) -> Unit
     ): FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = items.size
@@ -18,7 +20,16 @@ class CardViewPageAdapter(
             throw IllegalStateException("Items are empty")
         }
 
-        return items[position]
+        return items[position].run {
+            HomeCardItemFragment.newInstance(
+                limit,
+                brand,
+                number,
+                name,
+                expireAt,
+                background
+            )
+        }
     }
 
     override fun onBindViewHolder(
@@ -26,8 +37,8 @@ class CardViewPageAdapter(
         position: Int,
         payloads: MutableList<Any>
     ) {
-
         super.onBindViewHolder(holder, position, payloads)
-        holder.itemView.setOnClickListener {action.invoke()}
+
+        holder.itemView.setOnClickListener {action.invoke(items[position])}
     }
 }
