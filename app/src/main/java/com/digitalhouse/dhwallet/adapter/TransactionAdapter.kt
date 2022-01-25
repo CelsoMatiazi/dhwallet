@@ -18,7 +18,8 @@ private const val NAVTITLE = 2
 
 class TransactionAdapter(
     private val items: List<GroupTransaction>,
-    private val action : (GroupTransaction) -> Unit
+    private val action : (GroupTransaction) -> Unit,
+    private val detailAction: (GroupTransaction) -> Unit
 
     ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -51,7 +52,9 @@ class TransactionAdapter(
                 R.layout.item_transaction,
                 parent,
                 false
-            )
+            ),
+
+            detailAction
         )
     }
 
@@ -90,18 +93,30 @@ class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 }
 
-class TransactionViewHolder(view: View): RecyclerView.ViewHolder(view){
+class TransactionViewHolder(view: View, detailAction: (GroupTransaction) -> Unit): RecyclerView.ViewHolder(view){
 
     private val image : ImageView = view.findViewById(R.id.item_transaction_image)
     private val title : TextView = view.findViewById(R.id.item_transaction_title)
     private val subtitle : TextView = view.findViewById(R.id.item_transaction_subtitle)
     private val value : TextView = view.findViewById(R.id.item_transaction_value)
+    private var currentContent: GroupTransaction? = null
+
+    init {
+        view.setOnClickListener {
+            currentContent?.let{
+             detailAction.invoke(it)
+            }
+        }
+    }
+
+
 
     fun bind(item: GroupTransaction){
-        Glide.with(image.context).load(item.image).circleCrop().into(image);
+        Glide.with(image.context).load(item.image).circleCrop().into(image)
         title.text = item.title
         subtitle.text = item.subtitle
         value.text = item.value
+        currentContent = item
     }
 }
 

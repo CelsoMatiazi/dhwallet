@@ -4,12 +4,15 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +23,7 @@ import com.digitalhouse.dhwallet.data_mock.DataMock
 import com.digitalhouse.dhwallet.model.Card
 import com.digitalhouse.dhwallet.util.CustomPageTransformer
 import com.digitalhouse.dhwallet.util.decorator.HorizontalMarginItemDecoration
+import kotlinx.android.synthetic.main.fragment_transaction.*
 
 
 class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
@@ -81,9 +85,22 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
         viewPager.offscreenPageLimit = 1
 
         val recycler = view.findViewById<RecyclerView>(R.id.homeCard_recycler)
-        recycler.adapter = TransactionAdapter(DataMock().dataTransHomeCard()){
+        recycler.adapter = TransactionAdapter(DataMock().dataTransHomeCard(), {
             sendToTransaction()
-        }
+        },{
+            val sendIntent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, getString(
+                    R.string.share_transaction,
+                    it.title,
+                    it.subtitle,
+                    it.value)
+                )
+                type = "text/plain"
+            }
+            startActivity(Intent.createChooser(sendIntent, "Compartilhando Contato"))
+        })
+
 
        userImage = view.findViewById(R.id.user_img_home)
 
@@ -102,15 +119,16 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
     private fun getUserPhoto(){
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
+        getResult.launch(intent)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
-            userImage.setImageURI(data?.data)
+    private val getResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == Activity.RESULT_OK){
+            userImage.setImageURI(it.data?.data)
         }
     }
+
 
     private fun sendToTransaction(){
 
@@ -130,10 +148,5 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
 
         findNavController().navigate(action)
     }
-
-    companion object{
-        private val IMAGE_PICK_CODE = 1001
-    }
-
 
 }

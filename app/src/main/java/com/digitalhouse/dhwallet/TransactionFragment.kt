@@ -26,7 +26,7 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_transaction)
 
-        recycler.adapter = TransactionAdapter(DataMock().dataTransaction()) {
+        recycler.adapter = TransactionAdapter(DataMock().dataTransaction(),{}) {
 
             sendToTransfer().apply {
                     enterTransition = Slide(Gravity.END)
