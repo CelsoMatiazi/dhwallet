@@ -19,6 +19,7 @@ private const val NAVTITLE = 2
 class TransactionAdapter(
     private val items: List<GroupTransaction>,
     private val action : (GroupTransaction) -> Unit
+
     ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

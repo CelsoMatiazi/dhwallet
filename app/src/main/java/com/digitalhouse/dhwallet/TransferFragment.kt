@@ -24,7 +24,6 @@ class TransferFragment : Fragment(R.layout.fragment_transfer){
             Toast.makeText(requireContext(), "Premission Granted", Toast.LENGTH_SHORT).show()
         }else{
             Toast.makeText(requireContext(), "Premission denied", Toast.LENGTH_SHORT).show()
-
         }
     }
 
@@ -50,6 +49,5 @@ class TransferFragment : Fragment(R.layout.fragment_transfer){
             }
         }
     }
-
-
+    
 }

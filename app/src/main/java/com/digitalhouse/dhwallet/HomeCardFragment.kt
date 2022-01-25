@@ -1,8 +1,16 @@
 package com.digitalhouse.dhwallet
 
+import android.Manifest
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -15,6 +23,17 @@ import com.digitalhouse.dhwallet.util.decorator.HorizontalMarginItemDecoration
 
 
 class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
+
+    private lateinit var userImage: ImageView
+
+    val permissionResultCallback = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()){
+        if(it){
+            Toast.makeText(requireContext(), "Premission Granted", Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(requireContext(), "Premission Denied *", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -66,8 +85,32 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
             sendToTransaction()
         }
 
+       userImage = view.findViewById(R.id.user_img_home)
+
+        userImage.setOnClickListener{
+            val permission = ContextCompat.checkSelfPermission(it.context, Manifest.permission.READ_EXTERNAL_STORAGE)
+            if(permission != PackageManager.PERMISSION_GRANTED){
+                permissionResultCallback.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }else{
+                Toast.makeText(requireContext(), "Premission Granted", Toast.LENGTH_SHORT).show()
+                getUserPhoto()
+            }
+        }
+
     }
 
+    private fun getUserPhoto(){
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, IMAGE_PICK_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+            userImage.setImageURI(data?.data)
+        }
+    }
 
     private fun sendToTransaction(){
 
@@ -86,6 +129,10 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
             .actionHomeCardFragmentToCardItemFragment(card)
 
         findNavController().navigate(action)
+    }
+
+    companion object{
+        private val IMAGE_PICK_CODE = 1001
     }
 
 
