@@ -2,11 +2,15 @@ package com.digitalhouse.dhwallet
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
@@ -33,7 +37,10 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
     val permissionResultCallback = registerForActivityResult(
         ActivityResultContracts.RequestPermission()){
         if(it){
-            Toast.makeText(requireContext(), "Premission Granted", Toast.LENGTH_SHORT).show()
+            view?.context?.let { context ->
+                Toast.makeText(requireContext(), "Premission Granted", Toast.LENGTH_SHORT).show()
+                dialogPhoto(context)
+            }
         }else{
             Toast.makeText(requireContext(), "Premission Denied *", Toast.LENGTH_SHORT).show()
         }
@@ -104,25 +111,59 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
 
        userImage = view.findViewById(R.id.user_img_home)
 
-        userImage.setOnClickListener{
-            val permission = ContextCompat.checkSelfPermission(it.context, Manifest.permission.READ_EXTERNAL_STORAGE)
-            if(permission != PackageManager.PERMISSION_GRANTED){
-                permissionResultCallback.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
-            }else{
-                Toast.makeText(requireContext(), "Premission Granted", Toast.LENGTH_SHORT).show()
-                getUserPhoto()
+       userImage.setOnClickListener{ dialogPhoto(it.context) }
+
+    }
+
+
+    private fun dialogPhoto(context: Context) {
+        val items = arrayOf("Tirar Foto", "Buscar da galria")
+        AlertDialog
+            .Builder(context)
+            .setTitle("Qual você deseja usar?")
+            .setItems(items) { dialog, index ->
+            when (index) {
+                0 -> getImageCamera(context)
+                1 -> getUserPhoto()
             }
+            dialog.dismiss()
+        }.show()
+    }
+
+
+    private fun getImageCamera(context: Context){
+        val permission = ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+        if(permission == PackageManager.PERMISSION_GRANTED){
+            val intent = Intent().apply {
+                action = MediaStore.ACTION_IMAGE_CAPTURE
+            }
+            getResultCamera.launch(intent)
+        }else{
+            permissionResultCallback.launch(Manifest.permission.CAMERA)
+
         }
 
     }
 
+    private val getResultCamera = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == Activity.RESULT_OK){
+            val data = it.data
+            data?.extras?.get("data")?.let{ image ->
+                userImage?.setImageBitmap(image as Bitmap)
+            }
+        }
+    }
+
+
+
     private fun getUserPhoto(){
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        getResult.launch(intent)
+        getResultGallery.launch(intent)
     }
 
-    private val getResult = registerForActivityResult(
+    private val getResultGallery = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()){
         if(it.resultCode == Activity.RESULT_OK){
             userImage.setImageURI(it.data?.data)

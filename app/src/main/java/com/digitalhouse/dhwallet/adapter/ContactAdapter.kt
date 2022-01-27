@@ -10,14 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.digitalhouse.dhwallet.R
 import com.digitalhouse.dhwallet.model.Contact
+import com.digitalhouse.dhwallet.model.GroupTransaction
 import com.digitalhouse.dhwallet.util.load
 
 
-class ContactAdapter( private val items: List<Contact>): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class ContactAdapter(
+    private val items: List<Contact>,
+    private val action: (contact: View) -> Unit
+    ): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
        val inflator = LayoutInflater.from(parent.context)
-       return ContactViewHolder(inflator.inflate(R.layout.item_contact, parent, false))
+       return ContactViewHolder(inflator.inflate(R.layout.item_contact, parent, false), action)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -29,10 +33,16 @@ class ContactAdapter( private val items: List<Contact>): RecyclerView.Adapter<Re
     override fun getItemCount(): Int = items.size
 }
 
-class ContactViewHolder(view: View): RecyclerView.ViewHolder(view){
+class ContactViewHolder(view: View, action : (View) -> Unit): RecyclerView.ViewHolder(view){
     private val image: ImageView = view.findViewById(R.id.iv_contact_item)
     private val title: TextView = view.findViewById(R.id.item_contact_title)
     private val subtitle: TextView = view.findViewById(R.id.item_contact_sudtitle)
+    private val contact: View = view.findViewById(R.id.contact_view)
+
+    init {
+        contact.setOnClickListener { action.invoke(view) }
+    }
+
 
     fun bind(item: Contact){
 
@@ -40,6 +50,5 @@ class ContactViewHolder(view: View): RecyclerView.ViewHolder(view){
         image.load(image.context, image, item.image)
         title.text = item.name
         subtitle.text = item.type.description
-
     }
 }
