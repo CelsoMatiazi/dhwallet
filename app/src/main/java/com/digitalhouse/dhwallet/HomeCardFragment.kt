@@ -117,7 +117,7 @@ class HomeCardFragment : Fragment(R.layout.fragment_home_card) {
 
 
     private fun dialogPhoto(context: Context) {
-        val items = arrayOf("Tirar Foto", "Buscar da galria")
+        val items = arrayOf("Tirar Foto", "Buscar da galeria")
         AlertDialog
             .Builder(context)
             .setTitle("Qual você deseja usar?")
